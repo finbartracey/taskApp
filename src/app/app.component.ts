@@ -8,6 +8,8 @@ import { Component } from '@angular/core';
       color: dodgerblue;
     }`]
 })
+
 export class AppComponent {
+  constructor() { }
 
 }

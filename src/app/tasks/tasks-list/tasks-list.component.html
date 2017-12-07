@@ -1,0 +1,36 @@
+<p>
+  Tasks: click on a title or description to edit
+</p>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Created</th>
+      <th>Last Updated</th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let task of tasks">
+      <td *ngIf="task.name != editRowName" (click)="toggle(task.name)">{{task.title}}</td>
+      <td *ngIf="task.name != editRowName" (click)="toggle(task.name)">{{task.description}}</td>
+      <td *ngIf="task.name == editRowName">
+        <input type="text" class="task-list-input" [(ngModel)]="task.title">
+      </td>
+      <td *ngIf="task.name == editRowName">
+        <input type="text" class="task-list-input" [(ngModel)]="task.description">
+      </td>
+      <td>{{task.createTime | date:'d/M/yy, h:mm a' }}</td>
+      <td>{{task.updateTime | date:'d/M/yy, h:mm a' }}</td>
+      <td>
+        <button class="btn btn-info" (click)="editTask(task)">
+          <span class="glyphicon glyphicon-edit"></span>
+        </button>
+        <button class="btn btn-danger" (click)="deleteTask(task.name)">
+          <span class="glyphicon glyphicon-remove"></span>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
